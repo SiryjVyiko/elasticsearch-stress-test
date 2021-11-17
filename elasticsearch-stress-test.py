@@ -29,8 +29,7 @@ import json
 
 # Try and import elasticsearch
 try:
-    from elasticsearch import Elasticsearch
-    from elasticsearch.connection import create_ssl_context
+    from opensearchpy import OpenSearch
 
 except:
     print("Could not import elasticsearch..")
@@ -363,7 +362,7 @@ def main():
             if AUTH_USERNAME and AUTH_PASSWORD:
                 auth = (AUTH_USERNAME, AUTH_PASSWORD)
 
-            es = Elasticsearch(
+            es = OpenSearch(
                 esaddress,
                 http_auth=auth,
                 verify_certs=VERIFY_CERTS,
